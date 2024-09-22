@@ -79,3 +79,26 @@ SELECT DISTINCT airport.name FROM airport JOIN goal_reached ON airport.ident = (
 ### Tehtävä 10
 SELECT DISTINCT country.name FROM country JOIN airport ON country.iso_country = airport.iso_country JOIN goal_reached ON airport.ident = (SELECT location FROM game WHERE screen_name = 'Ilkka') JOIN goal ON goal_reached.goal_id = goal.id WHERE goal.name = 'clouds';
 ![img_19.png](img_19.png)
+
+
+# Join harjoitukset
+
+### Tehtävä 1
+SELECT country.name AS "country name", airport.name AS "airport name" FROM airport JOIN country ON airport.iso_country = country.iso_country WHERE country.name = 'Finland' AND airport.scheduled_service = 'yes';
+![img_20.png](img_20.png)
+
+### Tehtävä 2
+SELECT game.screen_name, airport.name FROM game JOIN airport ON game.location = airport.ident;
+![img_21.png](img_21.png)
+
+### Tehtävä 3
+SELECT game.screen_name, country.name FROM game JOIN airport ON game.location = airport.ident JOIN country ON airport.iso_country = country.iso_country;
+![img_22.png](img_22.png)
+
+### Tehtävä 4
+SELECT airport.name, game.screen_name FROM airport LEFT JOIN game ON airport.ident = game.location WHERE airport.name LIKE '%Hels%';
+![img_23.png](img_23.png)
+
+### Tehtävä 5
+SELECT goal.name AS "goal name", game.screen_name FROM goal JOIN goal_reached ON goal.id = goal_reached.goal_id JOIN game ON goal_reached.game_id = game.id;
+![img_24.png](img_24.png)
