@@ -128,8 +128,16 @@ SELECT goal.name FROM goal WHERE goal.id NOT IN (SELECT goal.id FROM goal JOIN g
 
 # Koostetieto kyselyt harjoitukset
 
-### Tehtävä 6
-SELECT MAX(elevation_ft) AS max_elevation FROM airport;
+### Tehtävä 1
+SELECT MAX(elevation_ft) AS "max(elevation_ft)" FROM airport;
 ![img_30.png](img_30.png)
+
+### Tehtävä 2
+SELECT continent, COUNT(*) AS "count(*)" FROM country GROUP BY continent;
+![img_31.png](img_31.png)
+
+### Tehtävä 3
+SELECT game.screen_name, COUNT(goal_reached.goal_id) AS "count(*)" FROM game JOIN goal_reached ON game.id = goal_reached.game_id JOIN goal ON goal_reached.goal_id = goal.id WHERE goal.name LIKE 'CLOUDS%' OR goal.name LIKE 'CLEAR%' OR goal.name LIKE 'WINDY%' OR goal.name LIKE 'HOT%' OR goal.name LIKE 'COLD%' OR goal.name LIKE '0DEG%' OR goal.name LIKE '10DEG%' OR goal.name LIKE '20DEG%' GROUP BY game.screen_name;
+![img_32.png](img_32.png)
 
 
