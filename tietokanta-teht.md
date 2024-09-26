@@ -140,4 +140,12 @@ SELECT continent, COUNT(*) AS "count(*)" FROM country GROUP BY continent;
 SELECT game.screen_name, COUNT(goal_reached.goal_id) AS "count(*)" FROM game JOIN goal_reached ON game.id = goal_reached.game_id JOIN goal ON goal_reached.goal_id = goal.id WHERE goal.name LIKE 'CLOUDS%' OR goal.name LIKE 'CLEAR%' OR goal.name LIKE 'WINDY%' OR goal.name LIKE 'HOT%' OR goal.name LIKE 'COLD%' OR goal.name LIKE '0DEG%' OR goal.name LIKE '10DEG%' OR goal.name LIKE '20DEG%' GROUP BY game.screen_name;
 ![img_32.png](img_32.png)
 
+### Tehtävä 4
+SELECT screen_name FROM game WHERE co2_consumed = (SELECT MIN(co2_consumed) FROM game);
+![img_33.png](img_33.png)
+
+### Tehtävä 5
+SELECT country.name, COUNT(airport.id) AS "count(*)" FROM country JOIN airport ON country.iso_country = airport.iso_country GROUP BY country.name ORDER BY COUNT(airport.id) DESC LIMIT 50;
+![img_34.png](img_34.png)
+
 
