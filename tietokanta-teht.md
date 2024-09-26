@@ -1,5 +1,4 @@
-# Relaatiotietokannan peruskäsitteiden harjoitukset
-![img.png](img.png)
+# Yhteen tauluun kohdistuvien kyselyiden harjoitukset
 
 ### Tehtävä 1
 SELECT * FROM goal
@@ -102,3 +101,35 @@ SELECT airport.name, game.screen_name FROM airport LEFT JOIN game ON airport.ide
 ### Tehtävä 5
 SELECT goal.name AS "goal name", game.screen_name FROM goal JOIN goal_reached ON goal.id = goal_reached.goal_id JOIN game ON goal_reached.game_id = game.id;
 ![img_24.png](img_24.png)
+
+
+# Sisäkysely harjoitukset
+
+### Tehtävä 1
+SELECT country.name FROM country JOIN airport ON country.iso_country = airport.iso_country WHERE airport.name LIKE 'Satsuma%';
+![img_25.png](img_25.png)
+
+### Tehtävä 2
+SELECT airport.name FROM airport JOIN country ON airport.iso_country = country.iso_country WHERE country.name = 'Monaco';
+![img_26.png](img_26.png)
+
+### Tehtävä 3
+SELECT game.screen_name FROM game JOIN goal_reached ON game.id = goal_reached.game_id JOIN goal ON goal_reached.goal_id = goal.id WHERE goal.name = 'CLOUDS';
+![img_27.png](img_27.png)
+
+### Tehtävä 4
+SELECT country.name FROM country WHERE country.iso_country NOT IN (SELECT DISTINCT airport.iso_country FROM airport);
+![img_28.png](img_28.png)
+
+### Tehtävä 5
+SELECT goal.name FROM goal WHERE goal.id NOT IN (SELECT goal.id FROM goal JOIN goal_reached ON goal.id = goal_reached.goal_id JOIN game ON goal_reached.game_id = game.id WHERE game.screen_name = 'Heini');
+![img_29.png](img_29.png)
+
+
+# Koostetieto kyselyt harjoitukset
+
+### Tehtävä 6
+SELECT MAX(elevation_ft) AS max_elevation FROM airport;
+![img_30.png](img_30.png)
+
+
